@@ -8,7 +8,7 @@ MY_PROFILE_SETTINGS = java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder \
  -XX:FlightRecorderOptions=defaultrecording=true,dumponexit=true,dumponexitpath=./my_profile.jfr,settings=profile
 
 MY_HEAP_STATS_SETTINGS = java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder \
- -XX:FlightRecorderOptions=defaultrecording=true,dumponexit=true,dumponexitpath=./my_heap_stats_profile.jfr,settings=heap_stats.jfc
+ -XX:FlightRecorderOptions=defaultrecording=true,dumponexit=true,dumponexitpath=./my_heap_stats_profile.jfr,settings=heap_stats
 
 
 junit5:
@@ -18,14 +18,14 @@ junit5:
 
 sample_profiler:
 	javac SampleProfilerApplication.java
-	$(SAMPLE_PROFILE_SETTINGS) SampleProfilerApplication 1000
-	$(SAMPLE_HEAP_STATS_SETTINGS) SampleProfilerApplication 1000
+	$(SAMPLE_PROFILE_SETTINGS) SampleProfilerApplication 100000000
+	$(SAMPLE_HEAP_STATS_SETTINGS) SampleProfilerApplication 100000000
 	ls -al *.jfr
 
 my_profiler:
 	javac MyProfiler.java
-	$(MY_PROFILE_SETTINGS) MyProfiler 1000
-	$(MY_HEAP_STATS_SETTINGS) MyProfiler 1000
+	$(MY_PROFILE_SETTINGS) MyProfiler 100000000
+	$(MY_HEAP_STATS_SETTINGS) MyProfiler 100000000
 	@echo "jmc -open my_profile.jfr"
 	@echo "jmc -open my_heap_stats_profile.jfr"
 
