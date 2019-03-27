@@ -55,13 +55,13 @@ public class MyProfiler<K extends Comparable<K>, V> {
         try {
             int numElements = Integer.parseInt(args[0]);
             MyProfiler<Integer,Integer> profile = new MyProfiler<Integer, Integer>();
-            for (int i = 100; i < numElements + 100; i++){
+            for (int i = ; i < numElements ; i++){
                 profile.insert(i,i);
             }
-            for (int i = 100; i < numElements + 100; i++){
+            for (int i = ; i < numElements; i++){
                 profile.retrieve(i);
             }
-            for (int i = 100; i < numElements + 100; i++){
+            for (int i = ; i < numElements; i++){
                 profile.remove(i);
             }
 
